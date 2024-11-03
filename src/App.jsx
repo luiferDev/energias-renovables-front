@@ -1,33 +1,25 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import CardItem from './Components/CardItem'
+import { Grid } from '@radix-ui/themes'
+import { useNumbers } from './Hooks/useNumbers';
+
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  const { number: solarNumber } = useNumbers('solar', '1');
+  const { number: eolicaNumber } = useNumbers('eolica', '1');
+  const { number: hidroelectricaNumber } = useNumbers('hidroelectrica', '1');
+  const { number: geotermicaNumber } = useNumbers('geotermica', '1');
+  const { number: biomasaNumber } = useNumbers('biomasa', '1');
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Grid columns={{ initial: "2", md: "3" }} gap="3" width="auto">
+        <CardItem energy="Energia Solar" number={`${solarNumber} MW`} />
+        <CardItem energy="Energia Eólica" number={`${eolicaNumber} MW`} />
+        <CardItem energy="Energia Hidroeléctrica" number={`${hidroelectricaNumber} MW`} />
+        <CardItem energy="Energia Geotérmica" number={`${geotermicaNumber} MW`} />
+        <CardItem energy="Energia Biomasa" number={`${biomasaNumber} MW`} />
+      </Grid>
+
     </>
   )
 }
