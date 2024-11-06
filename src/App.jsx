@@ -2,6 +2,8 @@ import { Section } from '@radix-ui/themes';
 import './App.css'
 import TableComponent from './Components/Table';
 import Nav from './Components/Nav';
+import { usePais } from './Hooks/usePais';
+import TableRowComponent from './Components/TableRowComponent';
 
 
 
@@ -11,6 +13,7 @@ function App() {
   // const { number: hidroelectricaNumber } = useNumbers('hidroelectrica', '1');
   // const { number: geotermicaNumber } = useNumbers('geotermica', '1');
   // const { number: biomasaNumber } = useNumbers('biomasa', '1');
+  const data = usePais('Colombia')
   return (
     <>
       {/* <Grid columns={{ initial: "2", md: "3" }} gap="3" width="auto">
@@ -22,7 +25,12 @@ function App() {
       </Grid> */}
       <Nav />
       <Section >
-        <TableComponent />
+        <TableComponent energiaProperty='Radiación Solar'>
+        {data.map((item) => (
+                    // Solo renderizamos `TableRowComponent` si `item` está definido
+                    item && <TableRowComponent key={item.pais.id} energia={'solar'} item={item} energiaFields={{ type: 'energia_solar', attribute: 'radiacionSolarPromedio' }} />
+                ))}
+        </TableComponent>
       </Section>
 
     </>
