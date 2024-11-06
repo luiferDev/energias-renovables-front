@@ -3,3 +3,17 @@
   margin: 0 auto;
   text-align: center;
 }
+
+.nav {
+  width: 100%;
+  display:contents;
+  align-items: center;
+  justify-content: space-between;
+  
+}
+
+.logo {
+  width: 160px;
+  cursor: pointer;
+  padding: 10px;
+}

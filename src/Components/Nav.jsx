@@ -1,10 +1,13 @@
 import { TabNav } from "@radix-ui/themes"
 import { Link } from "react-router-dom"
+import logo_nav from '../assets/rensys-nav-2.png'
 
 
 export default function Nav() {
     return (
-        <TabNav.Root>
+        <div className='nav'>
+        <img src= {logo_nav} alt="" className='logo'></img>
+        <TabNav.Root justify={"center"} highContrast={"True"}>
             <Link to={"/"}>
                 <TabNav.Link active={location.pathname === "/"} >
                     Energía Solar
@@ -25,7 +28,9 @@ export default function Nav() {
             <Link to={"/hidroelectrica"}>
                 <TabNav.Link active={location.pathname === "/hidroelectrica"} >Energía Hidroeléctrica</TabNav.Link>
             </Link>
+            
 
         </TabNav.Root>
+        </div>
     )
 }

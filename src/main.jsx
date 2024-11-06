@@ -31,7 +31,7 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <Theme accentColor="crimson"
+    <Theme accentColor="jade"
       grayColor="gray" radius="full" scaling="100%"
       panelBackground="solid"
       appearance="dark" >
