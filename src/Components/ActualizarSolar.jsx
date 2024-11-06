@@ -2,12 +2,33 @@
 import { Container } from '@radix-ui/themes'
 import '../../src/styles/actualizar-solar.css'
 import { Link } from 'react-router-dom'
-import { useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form'
+
+const pathname = window.location.pathname // extrae el path
+console.log(pathname)
+const id = pathname.split('/').pop()
 
 export default function ActualizarSolar() {
 
     const { register, handleSubmit } = useForm();
-    const onSubmit = data => console.log(JSON.stringify(data));
+    const onSubmit = data => {
+
+        fetch(`http://localhost:8080/api/pais/actualizar${id}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+    }
+
 
     return (
         <Container size="1" align={'center'} pt={"9"}>
